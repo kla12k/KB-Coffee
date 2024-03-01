@@ -21,6 +21,8 @@ class _CouponAndRewardState extends State<CouponAndReward> {
       });
   late ConfettiController _controllerCenterRight;
   late ConfettiController _controllerCenterLeft;
+  Color _scratcherColor = Color.fromARGB(
+      255, 137, 75, 17); // Define the _scratcherColor variable here
 
   int _start = 5;
   bool _disposed = false;
@@ -38,6 +40,9 @@ class _CouponAndRewardState extends State<CouponAndReward> {
 
   @override
   Widget build(BuildContext context) {
+    double maxDialogHeight = MediaQuery.of(context).size.height *
+        0.6; // Set the maximum height to 60% of the screen height
+
     _controllerCenterRight.play();
     _controllerCenterLeft.play();
     Size size = MediaQuery.of(context).size;
@@ -304,101 +309,102 @@ class _CouponAndRewardState extends State<CouponAndReward> {
                               child: Column(
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.all(0.0),
+                                    padding: const EdgeInsets.all(10.0),
                                     child: Scratcher(
-                                        brushSize: 30,
-                                        threshold: 50,
-                                        child: Image.asset(
-                                          'assets/images/c222.jpg',
-                                          fit: BoxFit.fill,
-                                        ),
-                                        onChange: (value) =>
-                                            print("Scratch progress: $value%"),
-                                        onThreshold: () {
-                                          showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) {
-                                              return AlertDialog(
-                                                title: Text('Congratulations!'),
-                                                content: Stack(
-                                                  children: <Widget>[
-                                                    Container(
-                                                        width: 60,
-                                                        height: 80,
-                                                        child: Text(
-                                                            "You won ....")),
-                                                    Align(
-                                                      alignment:
-                                                          Alignment.topCenter,
-                                                      child: Stack(
-                                                        children: <Widget>[
-                                                          Align(
-                                                            alignment: Alignment
-                                                                .centerRight,
-                                                            child:
-                                                                ConfettiWidget(
-                                                              confettiController:
-                                                                  _controllerCenterRight,
-                                                              blastDirection:
-                                                                  pi, // radial value - LEFT
-                                                              particleDrag:
-                                                                  0.05, // apply drag to the confetti
-                                                              emissionFrequency:
-                                                                  0.05, // how often it should emit
-                                                              numberOfParticles:
-                                                                  20, // number of particles to emit
-                                                              gravity:
-                                                                  0.05, // gravity - or fall speed
-                                                              shouldLoop: false,
-                                                              colors: const [
-                                                                Colors.green,
-                                                                Colors.blue,
-                                                                Colors.pink,
-                                                                Colors.yellow,
-                                                                Colors.red
-                                                              ], // manually specify the colors to be used
-                                                            ),
+                                      brushSize: 30,
+                                      threshold: 50,
+                                      child: Image.asset(
+                                        'assets/images/15.jpeg',
+                                        fit: BoxFit.fill,
+                                      ),
+                                      onChange: (value) =>
+                                          print("Scratch progress: $value%"),
+                                      onThreshold: () {
+                                        setState(() {
+                                          _scratcherColor =
+                                              Color.fromARGB(255, 137, 75, 17);
+                                        });
+
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              title: Text('Congratulations!'),
+                                              content: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: <Widget>[
+                                                  Container(
+                                                      child: Text(
+                                                          "You have won 15% discount card!!")),
+                                                  Align(
+                                                    alignment:
+                                                        Alignment.topCenter,
+                                                    child: Stack(
+                                                      children: <Widget>[
+                                                        Align(
+                                                          alignment: Alignment
+                                                              .centerRight,
+                                                          child: ConfettiWidget(
+                                                            confettiController:
+                                                                _controllerCenterRight,
+                                                            blastDirection:
+                                                                pi, // radial value - LEFT
+                                                            particleDrag:
+                                                                0.05, // apply drag to the confetti
+                                                            emissionFrequency:
+                                                                0.05, // how often it should emit
+                                                            numberOfParticles:
+                                                                10, // number of particles to emit
+                                                            gravity:
+                                                                1, // gravity - or fall speed
+                                                            shouldLoop: false,
+                                                            colors: const [
+                                                              Colors.green,
+                                                              Colors.blue,
+                                                              Colors.pink,
+                                                            ], // manually specify the colors to be used
                                                           ),
-                                                          Align(
-                                                            alignment: Alignment
-                                                                .centerLeft,
-                                                            child:
-                                                                ConfettiWidget(
-                                                              confettiController:
-                                                                  _controllerCenterLeft,
-                                                              blastDirection:
-                                                                  0, // radial value - RIGHT
-                                                              emissionFrequency:
-                                                                  0.6,
-                                                              minimumSize:
-                                                                  const Size(10,
-                                                                      10), // set the minimum potential size for the confetti (width, height)
-                                                              maximumSize:
-                                                                  const Size(50,
-                                                                      50), // set the maximum potential size for the confetti (width, height)
-                                                              numberOfParticles:
-                                                                  1,
-                                                              gravity: 0.1,
-                                                            ),
+                                                        ),
+                                                        Align(
+                                                          alignment: Alignment
+                                                              .centerLeft,
+                                                          child: ConfettiWidget(
+                                                            confettiController:
+                                                                _controllerCenterLeft,
+                                                            blastDirection:
+                                                                1, // radial value - RIGHT
+                                                            emissionFrequency:
+                                                                0.6,
+                                                            minimumSize: const Size(
+                                                                10,
+                                                                10), // set the minimum potential size for the confetti (width, height)
+                                                            maximumSize: const Size(
+                                                                50,
+                                                                50), // set the maximum potential size for the confetti (width, height)
+                                                            numberOfParticles:
+                                                                2,
+                                                            gravity: 0.5,
                                                           ),
-                                                        ],
-                                                      ),
+                                                        ),
+                                                      ],
                                                     ),
-                                                  ],
-                                                ),
-                                                actions: <Widget>[
-                                                  TextButton(
-                                                    child: Text('OK'),
-                                                    onPressed: () {
-                                                      Navigator.of(context)
-                                                          .pop();
-                                                    },
-                                                  )
+                                                  ),
                                                 ],
-                                              );
-                                            },
-                                          );
-                                        }),
+                                              ),
+                                              actions: <Widget>[
+                                                TextButton(
+                                                  child: Text('OK'),
+                                                  onPressed: () {
+                                                    Navigator.of(context).pop();
+                                                  },
+                                                )
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      },
+                                      color: _scratcherColor,
+                                    ),
                                   )
                                 ],
                               ),
