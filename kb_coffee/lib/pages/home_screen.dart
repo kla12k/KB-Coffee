@@ -5,6 +5,7 @@ import 'package:kb_coffee/models/hotdrink_model.dart';
 import 'package:kb_coffee/pages/categories_screen.dart';
 import 'package:kb_coffee/pages/detail_screen.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:kb_coffee/pages/notfication_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -26,15 +27,10 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           leading: Padding(
-            padding: const EdgeInsets.only(left: 15.0),
-            child: IconButton(
-              iconSize: 50,
-              icon: Icon(
-                Icons.account_circle,
-              ),
-              onPressed: () {},
-            ),
-          ),
+              padding: const EdgeInsets.only(left: 15.0),
+              child: Image(
+                image: AssetImage("assets/images/u.png"),
+              )),
           flexibleSpace: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -49,7 +45,10 @@ class HomeScreen extends StatelessWidget {
               child: IconButton(
                 iconSize: 35,
                 icon: Icon(Icons.notifications),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Notify()));
+                },
               ),
             ),
           ],

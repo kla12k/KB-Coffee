@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:kb_coffee/pages/P_and_p_screen.dart';
+import 'package:kb_coffee/pages/about_screen.dart';
 import 'package:kb_coffee/pages/changepass_screen.dart';
 import 'package:kb_coffee/pages/editaccount_screen.dart';
 import 'package:kb_coffee/pages/login_screen.dart';
+import 'package:kb_coffee/pages/notfication_screen.dart';
 import 'package:kb_coffee/pages/payment_screen.dart';
 import 'package:kb_coffee/pages/reward_screen.dart';
 
@@ -13,15 +16,10 @@ class MenuScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           leading: Padding(
-            padding: const EdgeInsets.only(left: 15.0),
-            child: IconButton(
-              iconSize: 50,
-              icon: const Icon(
-                Icons.account_circle,
-              ),
-              onPressed: () {},
-            ),
-          ),
+              padding: const EdgeInsets.only(left: 15.0),
+              child: Image(
+                image: AssetImage("assets/images/u.png"),
+              )),
           flexibleSpace: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -36,7 +34,10 @@ class MenuScreen extends StatelessWidget {
               child: IconButton(
                 iconSize: 35,
                 icon: const Icon(Icons.notifications),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Notify()));
+                },
               ),
             ),
           ],
@@ -329,9 +330,17 @@ class MenuScreen extends StatelessWidget {
                           alignment: Alignment.centerRight,
                           child: Padding(
                             padding: EdgeInsets.all(8.0),
-                            child: Icon(
-                              Icons.navigate_next_outlined,
-                              size: 30,
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => PandPScreen()));
+                              },
+                              child: Icon(
+                                Icons.navigate_next_outlined,
+                                size: 30,
+                              ),
                             ),
                           ),
                         ),
@@ -375,9 +384,18 @@ class MenuScreen extends StatelessWidget {
                           alignment: Alignment.centerRight,
                           child: Padding(
                             padding: EdgeInsets.all(8.0),
-                            child: Icon(
-                              Icons.navigate_next_outlined,
-                              size: 30,
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            AboutKBCoffeeScreen()));
+                              },
+                              child: Icon(
+                                Icons.navigate_next_outlined,
+                                size: 30,
+                              ),
                             ),
                           ),
                         ),

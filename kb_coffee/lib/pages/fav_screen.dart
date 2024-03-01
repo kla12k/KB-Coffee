@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kb_coffee/models/liked_drink.dart';
 import 'package:kb_coffee/pages/detail_screen.dart';
+import 'package:kb_coffee/pages/notfication_screen.dart';
 
 class FavScreen extends StatefulWidget {
   @override
@@ -25,15 +26,10 @@ class _FavScreenState extends State<FavScreen> {
     return Scaffold(
         appBar: AppBar(
           leading: Padding(
-            padding: const EdgeInsets.only(left: 15.0),
-            child: IconButton(
-              iconSize: 50,
-              icon: Icon(
-                Icons.account_circle,
-              ),
-              onPressed: () {},
-            ),
-          ),
+              padding: const EdgeInsets.only(left: 15.0),
+              child: Image(
+                image: AssetImage("assets/images/u.png"),
+              )),
           flexibleSpace: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -48,7 +44,10 @@ class _FavScreenState extends State<FavScreen> {
               child: IconButton(
                 iconSize: 35,
                 icon: Icon(Icons.notifications),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Notify()));
+                },
               ),
             ),
           ],
