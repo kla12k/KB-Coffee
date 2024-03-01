@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_grid_list/responsive_grid_list.dart';
 import 'package:scratcher/scratcher.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math';
 
 import 'package:confetti/confetti.dart';
